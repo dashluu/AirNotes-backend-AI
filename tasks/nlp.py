@@ -2,8 +2,8 @@ from transformers import pipeline
 
 summary_model = "facebook/bart-large-cnn"
 qa_model = "deepset/roberta-base-squad2"
-summarizer = pipeline("summarization", model=summary_model)
-qa = pipeline("question-answering", model=qa_model, tokenizer=qa_model)
+summarizer = pipeline("summarization", model=summary_model, device="mps")
+qa = pipeline("question-answering", model=qa_model, tokenizer=qa_model, device="mps")
 
 
 def summarize(text):
