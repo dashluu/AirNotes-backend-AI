@@ -6,5 +6,5 @@ class SummaryModel(BaseModel):
 
 
 class QAModel(BaseModel):
-    question: str
+    query: str
     context: str
