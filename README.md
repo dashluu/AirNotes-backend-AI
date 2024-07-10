@@ -7,8 +7,9 @@
 ![img.png](screenshots/screenshot3.png)
 
 ## Requirement
-* HuggingFace
-* FastAPI
+* LlamaIndex and Ollama for LLM
+* MLX for Stable Diffusion
+* FastAPI for web server
 
 ## Usage
 Clone the repository
