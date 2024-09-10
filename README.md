@@ -33,7 +33,7 @@ uvicorn server:app --reload
 The server can now accept request from the frontend. Check out my frontend app here https://github.com/dashluu/AirNotes-web
 
 ## Features
-- [x] Generate summary using context from the current document
-- [x] Generate answer to question using context from the current document
-- [x] Semantic search across all documents
+- [x] Generate summary using LLM and context from the current document
+- [x] Generate answer to question using LLM and context from the current document
+- [x] Semantic search across all documents using vector search and LLM(slow)
 - [x] Generate images with Stable Diffusion(slow)
