@@ -10,6 +10,10 @@ The backend of a basic note taking app inspired by Notion. There are still bugs 
 
 ![img.png](screenshots/screenshot4.png)
 
+## Acknowledgement
+* Stable diffusion with MLX: https://github.com/ml-explore/mlx-examples/tree/main/stable_diffusion/stable_diffusion
+* Firebase reader: https://github.com/run-llama/llama_index/blob/main/llama-index-integrations/readers/llama-index-readers-firebase-realtimedb/llama_index/readers/firebase_realtimedb/base.py
+
 ## Requirement
 * LlamaIndex and Ollama for LLM
 * MLX for Stable Diffusion
