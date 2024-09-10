@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+from typing import List
+from pydantic import BaseModel, Field
 
 
 class SummaryModel(BaseModel):
@@ -17,3 +18,8 @@ class QAModel(BaseModel):
 class SearchModel(BaseModel):
     user_id: str
     query: str
+
+
+class SearchOutput(BaseModel):
+    response: str = Field(..., description="The answer to the question.")
+    src: List[str] = Field(..., description="The document filenames of the sources.")

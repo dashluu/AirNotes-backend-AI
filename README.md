@@ -39,5 +39,8 @@ The server can now accept request from the frontend. Check out my frontend app h
 ## Features
 - [x] Generate summary using LLM and context from the current document
 - [x] Generate answer to question using LLM and context from the current document
-- [x] Semantic search across all documents using vector search and LLM(slow)
+- [x] Semantic search across all documents using vector search and LLM
 - [x] Generate images with Stable Diffusion(slow)
+
+## Known issues
+* Search is still limited, especially when filtering on the home page

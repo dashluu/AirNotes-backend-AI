@@ -18,6 +18,7 @@ import json
 import os
 import shutil
 from pathlib import Path
+from models.nlp_models import SearchOutput
 
 
 class NLPEngine:
@@ -147,7 +148,7 @@ class NLPEngine:
         )
 
     async def search(
-        self, user_id: str, query: str, sim_top_k=20, top_n=20
+        self, user_id: str, query: str, sim_top_k=20, top_n=1
     ) -> list[dict]:
         index = self.load_search_index(user_id)
         # create a reranker
@@ -162,13 +163,15 @@ class NLPEngine:
         query_engine = index.as_query_engine(
             similarity_top_k=sim_top_k, node_postprocessors=[reranker]
         )
-        response = await query_engine.aquery(f"{query}. Please cite the sources.")
+        response = await query_engine.aquery(
+            f"{query}. Please only use the retrieved document as the primary source."
+        )
         nodes = response.source_nodes
-        results = []
+        src = []
         for i in range(len(nodes)):
             # Turn text into dictionary and append to results
             text = nodes[i].text
             text = text[: text.find(',\n"content"')]
-            results.append(json.loads(f"{{{text}}}"))
+            src.append(json.loads(f"{{{text}}}"))
         # TODO: Filter the results
-        return results
+        return str(response), src

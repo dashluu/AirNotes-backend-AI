@@ -70,9 +70,18 @@ def text_to_img_handler(text_to_img_model: TextToImgModel):
     return FileResponse(img_name)
 
 
-@app.post("/search", response_model=list[dict])
-async def search_list_handler(search_model: SearchModel):
+@app.post("/search", response_model=dict)
+async def search_handler(search_model: SearchModel):
     user_id = search_model.user_id
     query = search_model.query
-    results = await nlp_engine.search(user_id, query)
-    return results
+    response, src = await nlp_engine.search(user_id, query, top_n=1)
+    result = {"answer": response, "src": src}
+    return result
+
+
+@app.post("/filter", response_model=list[dict])
+async def filter_handler(search_model: SearchModel):
+    user_id = search_model.user_id
+    query = search_model.query
+    _, src = await nlp_engine.search(user_id, query, top_n=5)
+    return src
