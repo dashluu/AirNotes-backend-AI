@@ -1,3 +1,8 @@
 .idea
-service_key.json
+firebase/service_key.json
 config.py
+experiment.ipynb
+db
+images
+*/__pycache__
+__pycache__

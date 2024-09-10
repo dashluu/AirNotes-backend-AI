@@ -8,12 +8,12 @@ from engines.stable_diffusion import StableDiffusionXL
 
 
 class VisionEngine:
-    def __save_img(self, tensor, img_name):
+    def save_img(self, tensor, img_name) -> Image:
         img = Image.fromarray(tensor)
         img.save(img_name)
         return img
 
-    async def __text_to_img(self, text):
+    def __text_to_img(self, text):
         # Stable diffusion XL
         sd = StableDiffusionXL("stabilityai/sdxl-turbo", float16=False)
 
@@ -72,8 +72,8 @@ class VisionEngine:
         print(f"Peak memory used overall:      {peak_mem_overall:.3f}GB")
         return np.array(x)
 
-    async def text_to_img(self, text, img_name):
+    def text_to_img(self, text, img_name):
         # Generate image tensor from text
-        t = await self.__text_to_img(text)
+        t = self.__text_to_img(text)
         # Save them to disc
-        self.__save_img(t, img_name)
+        self.save_img(t, img_name)
